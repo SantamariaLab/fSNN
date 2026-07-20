@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#SBATCH --job-name=SNN_cartpole
+#SBATCH --output=run_evaluation_hybrids.ext
+#SBATCH --partition=compute1
+#SBATCH --time=16:10:00
+#SBATCH --ntasks=540
+#SBATCH --cpus-per-task=1
+
+module load anaconda3
+conda activate cartpole
+module load openmpi/5.0.3
+
+mpirun -np 540 python run_evaluation_hybrids.py
