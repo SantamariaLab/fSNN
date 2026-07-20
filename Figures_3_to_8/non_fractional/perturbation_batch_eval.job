@@ -1,0 +1,13 @@
+#!/bin/bash -l
+#SBATCH --job-name=SNN_cartpole_perturbation
+#SBATCH --output=evaluate_perturbation.ext
+#SBATCH --partition=compute1
+#SBATCH --time=26:10:00
+#SBATCH --ntasks=150
+#SBATCH --cpus-per-task=1
+
+module load anaconda3
+conda activate cartpole
+module load openmpi/5.0.3
+
+mpirun -np 150 python evaluate_perturbation.py
